@@ -4,9 +4,13 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
 import User from './User';
+
+// Princípio KISS => Keep It Simple & Stupid
 
 @Entity('appointments') // Para armazenar nesta tabela
 class Appointment {
@@ -16,6 +20,8 @@ class Appointment {
   @Column() // Por padrão, string
   provider_id: string;
 
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'provider_id' })
   provider: User;
 
   @Column('timestamp with time zone')
