@@ -1,7 +1,6 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
-import { name } from 'express';
+import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 
-export default class CreateAppointmentsN1589329124990
+export default class CreateAppointments1586995826896
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
@@ -35,10 +34,10 @@ export default class CreateAppointmentsN1589329124990
           },
         ],
       }),
-    );
+    )
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('appointments');
+    await queryRunner.dropTable('appointments')
   }
 }

@@ -6,34 +6,37 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
-} from 'typeorm';
+} from 'typeorm'
 
-import User from '@modules/users/infra/typeorm/entities/User';
+import User from '@modules/users/infra/typeorm/entities/User'
 
-// Princípio KISS => Keep It Simple & Stupid
-
-@Entity('appointments') // Para armazenar nesta tabela
+@Entity('appointments')
 class Appointment {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: string
 
-  @Column() // Por padrão, string
-  provider_id: string;
+  @Column()
+  provider_id: string
 
   @ManyToOne(() => User)
   @JoinColumn({ name: 'provider_id' })
-  provider: User;
+  provider: User
+
+  @Column()
+  user_id: string
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User
 
   @Column('timestamp with time zone')
-  date: Date;
+  date: Date
 
   @CreateDateColumn()
-  created_at: Date;
+  created_at: Date
 
   @UpdateDateColumn()
-  updated_at: Date;
-
-  // Ao criar uma Entity do typrorm, o constructor é gerado automaticamente
+  updated_at: Date
 }
 
-export default Appointment;
+export default Appointment
